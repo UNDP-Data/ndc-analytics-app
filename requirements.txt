@@ -1,0 +1,14 @@
+streamlit ~= 1.45.1
+st-annotated-text ~= 4.0.2
+st-undp @ git+https://github.com/undp-data/st-undp.git@0.1.0
+numpy ~= 2.2.6
+pandas ~= 2.2.3
+plotly[express] ~= 6.1.0
+pydantic == 2.11.4
+lancedb[pylance, azure] == 0.22.0
+duckdb == 1.2.2
+requests ~= 2.32.3
+beautifulsoup4 ~= 4.13.4
+openai ~= 1.79.0
+tiktoken ~= 0.9.0
+python-dotenv ~= 1.1.0
