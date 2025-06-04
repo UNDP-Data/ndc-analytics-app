@@ -35,7 +35,7 @@ pages = [
 
 st_undp.header(
     title="DFx AI as a Service".upper(),
-    subtitle="NDC Analytics App<sup>Preview</sup>",
+    subtitle="NDC Analytics App",
     title_href="https://data.undp.org/what-we-do/ai-as-service",
     subtitle_href="./",
     pages=pages,
