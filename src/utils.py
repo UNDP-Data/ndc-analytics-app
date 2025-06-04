@@ -14,6 +14,7 @@ import requests
 from .entities import FeedItem
 
 __all__ = [
+    "LANGUAGES",
     "read_text_file",
     "read_csv_file",
     "read_geojson",
@@ -23,6 +24,16 @@ __all__ = [
     "generate_ngrams",
     "complete_data_series",
 ]
+
+
+LANGUAGES = {
+    "ar": "Arabic",
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French",
+    "ru": "Russian",
+    "zh": "Chinese",
+}
 
 
 def read_text_file(file_name: str) -> str:

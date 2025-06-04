@@ -10,7 +10,7 @@ import pandas as pd
 import streamlit as st
 
 from .entities import Engine, Request
-from .utils import read_csv_file
+from .utils import LANGUAGES, read_csv_file
 
 __all__ = ["get_connection", "get_table", "get_metadata", "search_documents"]
 
@@ -95,9 +95,7 @@ def get_metadata() -> dict:
     ORDER BY date DESC
     """
     df = duckdb.query(query).to_df()
-    df["language"] = df["language"].map(
-        {"en": "English", "fr": "French", "ru": "Russian", "es": "Spanish"}
-    )
+    df["language"] = df["language"].map(LANGUAGES)
     metadata["ndcs"] = df
 
     return metadata
