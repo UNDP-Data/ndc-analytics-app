@@ -24,7 +24,9 @@ def search():
     if st.session_state["engine"] == Engine.NEURAL:
         request.query = embed_texts([request.query])[0]
     # run the search against NDC passages
-    df = search_documents(request=request, limit=100)
+    if (df := search_documents(request=request, limit=100)).empty:
+        st.session_state["results"] = df
+        return
     # remove redundant columns and calculate the score
     df.drop("vector", axis=1, inplace=True)
     if "_distance" in df.columns:
