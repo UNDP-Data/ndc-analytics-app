@@ -31,11 +31,12 @@ pages = [
     st.Page(page="src/pages/ndcs.py", url_path="/ndcs"),
     st.Page(page="src/pages/rss.py", url_path="/rss"),
     st.Page(page="src/pages/about.py", url_path="/about"),
+    st.Page(page="src/pages/changelog.py", url_path="/changelog"),
 ]
 
 st_undp.header(
     title="DFx AI as a Service".upper(),
-    subtitle="NDC Analytics App<sup>Preview</sup>",
+    subtitle="NDC Analytics App",
     title_href="https://data.undp.org/what-we-do/ai-as-service",
     subtitle_href="./",
     pages=pages,
@@ -43,6 +44,7 @@ st_undp.header(
 )
 st.subheader("Intelligent multi-lingual search across the NDC registry")
 pg = st.navigation(pages=pages, position="hidden")
+st_undp.breadcrumb({"Home": "/", pg.title: None})
 with st.sidebar:
     if "search" in pg.title.lower():
         components.add_search_form()

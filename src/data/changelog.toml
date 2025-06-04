@@ -1,0 +1,13 @@
+"2025.06.00" = """
+This release features a database update and minor improvements to the UI.
+
+- NDCs submitted before June 2025 are now included. Documents in all languages are processed.
+- All pages now include a breadcrum for improved navigation.
+- Preview label has been removed.
+- A changelog page has been added to document updates.
+"""
+
+"2025.05.00" = """
+The first open-source release of the original application. NDCs submitted before August 2024 are included.
+Only documents in English, French, Spanish and Russian are processed.
+"""

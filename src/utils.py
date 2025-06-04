@@ -13,6 +13,17 @@ import requests
 
 from .entities import FeedItem
 
+__all__ = [
+    "read_text_file",
+    "read_csv_file",
+    "read_geojson",
+    "read_toml_file",
+    "read_prompts",
+    "get_feed",
+    "generate_ngrams",
+    "complete_data_series",
+]
+
 
 def read_text_file(file_name: str) -> str:
     """
@@ -69,6 +80,24 @@ def read_geojson() -> dict:
         return json.load(file)
 
 
+def read_toml_file(file_name: str) -> dict:
+    """
+    Read a TOML file from the package's `data` directory.
+
+    Parameters
+    ----------
+    file_name : str
+        Name of the file to read.
+
+    Returns
+    -------
+    dict
+        Contents of the TOML file as a dictionary.
+    """
+    text = read_text_file(file_name)
+    return tomllib.loads(text)
+
+
 def read_prompts() -> dict:
     """
     Read the prompts from the package's `data` directory.
@@ -78,8 +107,7 @@ def read_prompts() -> dict:
     dict
         Dictionary mapping names to prompts.
     """
-    text = read_text_file("prompts.toml")
-    return tomllib.loads(text)
+    return read_toml_file("promps.toml")
 
 
 def get_feed() -> list[FeedItem]:
