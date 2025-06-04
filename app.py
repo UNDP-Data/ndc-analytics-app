@@ -31,6 +31,7 @@ pages = [
     st.Page(page="src/pages/ndcs.py", url_path="/ndcs"),
     st.Page(page="src/pages/rss.py", url_path="/rss"),
     st.Page(page="src/pages/about.py", url_path="/about"),
+    st.Page(page="src/pages/changelog.py", url_path="/changelog"),
 ]
 
 st_undp.header(
