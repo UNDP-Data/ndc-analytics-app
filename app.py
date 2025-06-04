@@ -43,6 +43,7 @@ st_undp.header(
 )
 st.subheader("Intelligent multi-lingual search across the NDC registry")
 pg = st.navigation(pages=pages, position="hidden")
+st_undp.breadcrumb({"Home": "/", pg.title: None})
 with st.sidebar:
     if "search" in pg.title.lower():
         components.add_search_form()
