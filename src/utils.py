@@ -39,7 +39,8 @@ def read_text_file(file_name: str) -> str:
     str
         Content of the file as a string.
     """
-    with resources.open_text("src.data", file_name) as file:
+    file_path = resources.files("src.data") / file_name
+    with file_path.open() as file:
         return file.read()
 
 
@@ -57,7 +58,8 @@ def read_csv_file(file_name: str) -> pd.DataFrame:
     pd.DataFrame
         Content of the file as a data frame.
     """
-    with resources.open_text("src.data", file_name) as file:
+    file_path = resources.files("src.data") / file_name
+    with file_path.open() as file:
         return pd.read_csv(file)
 
 
@@ -76,7 +78,8 @@ def read_geojson() -> dict:
     dict
         GeoJSON of the country polygons.
     """
-    with resources.open_text("src.data", "countries.geojson") as file:
+    file_path = resources.files("src.data") / "countries.geojson"
+    with file_path.open() as file:
         return json.load(file)
 
 
