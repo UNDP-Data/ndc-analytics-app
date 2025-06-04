@@ -107,7 +107,7 @@ def read_prompts() -> dict:
     dict
         Dictionary mapping names to prompts.
     """
-    return read_toml_file("promps.toml")
+    return read_toml_file("prompts.toml")
 
 
 def get_feed() -> list[FeedItem]:
