@@ -8,6 +8,7 @@ import streamlit as st
 from .database import search_documents
 from .entities import Engine, Passage, Request
 from .genai import embed_texts, paraphrase
+from .utils import LANGUAGES
 
 
 def search():
@@ -24,16 +25,16 @@ def search():
     if st.session_state["engine"] == Engine.NEURAL:
         request.query = embed_texts([request.query])[0]
     # run the search against NDC passages
-    df = search_documents(request=request, limit=100)
+    if (df := search_documents(request=request, limit=100)).empty:
+        st.session_state["results"] = df
+        return
     # remove redundant columns and calculate the score
     df.drop("vector", axis=1, inplace=True)
     if "_distance" in df.columns:
         df.eval("_score = (1 - _distance) * 100", inplace=True)
     df.rename({"_score": "score"}, axis=1, inplace=True)
     # recode langages for readability
-    df["language"] = df["language"].map(
-        {"en": "English", "fr": "French", "ru": "Russian", "es": "Spanish"}
-    )
+    df["language"] = df["language"].map(LANGUAGES)
     # aggregate the results to NDC level
     df["matches"] = df[["pages", "text", "score"]].to_dict(orient="records")
     columns = [

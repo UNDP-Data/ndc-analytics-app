@@ -1,3 +1,12 @@
+"2025.06.01" = """
+This is a hotfix release that fixes a bug in "Ask" feature and adds basic tests.
+
+- Resolve the issue that prevented "Ask" feature from working.
+- Search now gracefully handles queries that produce no results.
+- Correctly display languages in the table on the NDC page.
+- Basic app tests are now included in the project.
+"""
+
 "2025.06.00" = """
 This release features a database update and minor improvements to the UI.
 

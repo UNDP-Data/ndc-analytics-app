@@ -14,6 +14,7 @@ import requests
 from .entities import FeedItem
 
 __all__ = [
+    "LANGUAGES",
     "read_text_file",
     "read_csv_file",
     "read_geojson",
@@ -23,6 +24,16 @@ __all__ = [
     "generate_ngrams",
     "complete_data_series",
 ]
+
+
+LANGUAGES = {
+    "ar": "Arabic",
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French",
+    "ru": "Russian",
+    "zh": "Chinese",
+}
 
 
 def read_text_file(file_name: str) -> str:
@@ -39,7 +50,8 @@ def read_text_file(file_name: str) -> str:
     str
         Content of the file as a string.
     """
-    with resources.open_text("src.data", file_name) as file:
+    file_path = resources.files("src.data") / file_name
+    with file_path.open() as file:
         return file.read()
 
 
@@ -57,7 +69,8 @@ def read_csv_file(file_name: str) -> pd.DataFrame:
     pd.DataFrame
         Content of the file as a data frame.
     """
-    with resources.open_text("src.data", file_name) as file:
+    file_path = resources.files("src.data") / file_name
+    with file_path.open() as file:
         return pd.read_csv(file)
 
 
@@ -76,7 +89,8 @@ def read_geojson() -> dict:
     dict
         GeoJSON of the country polygons.
     """
-    with resources.open_text("src.data", "countries.geojson") as file:
+    file_path = resources.files("src.data") / "countries.geojson"
+    with file_path.open() as file:
         return json.load(file)
 
 
@@ -107,7 +121,7 @@ def read_prompts() -> dict:
     dict
         Dictionary mapping names to prompts.
     """
-    return read_toml_file("promps.toml")
+    return read_toml_file("prompts.toml")
 
 
 def get_feed() -> list[FeedItem]:
